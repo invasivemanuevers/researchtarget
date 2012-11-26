@@ -1,19 +1,6 @@
 <% title "Edit Survey" %>
-<%= form_for @survey do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %> <br/>
-    <%= f.text_field :name %>
-  </p>
-  <%= f.fields_for :questions do |builder| %>
-    <%= render "question_fields", :f => builder %>
-  <% end %>
-  <p><%= f.submit "Submit"%> </p>
-<%end %>
-<p>
-  <%= link_to "Show", @survey %> |
-  <%= link_to "View All", surveys_path %>
-</p>
+
+<%= render 'form'%>
 
 
 
