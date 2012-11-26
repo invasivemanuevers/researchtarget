@@ -1,0 +1,45 @@
+<% title "Login page" %>
+
+<div style="float: left;width:300px">
+  <h3> Login <h3>
+<fieldset>
+<%= form_for @user,:url => "users/login" do |f|  %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.label :user_type %><br />
+    <%= f.select(:user_type,["company","agent"]) %>
+  </p>
+  <p><%= f.submit "Login" %></p>
+<% end %>
+</fieldset>
+</div>
+
+<div style="float: left;width:300px">
+  <h3> New User<h3>
+<fieldset>
+<%= form_for @user, :url =>"users/new" do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.label :user_type %><br />
+    <%= f.select(:user_type,["company","agent"]) %>
+  </p>
+  <p><%= f.submit "Create User" %></p>
+<% end %>
+</fieldset>
+</div>

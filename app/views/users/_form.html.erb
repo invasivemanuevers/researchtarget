@@ -1,0 +1,16 @@
+<%= form_for @user do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.label :user_type %><br />
+    <%= f.select(:user_type,["company","agent"]) %>
+  </p>
+  <p><%= f.submit "Login" %></p>
+<% end %>
