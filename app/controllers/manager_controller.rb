@@ -1,10 +1,9 @@
 class ManagerController < ApplicationController
 	def index
-		@user = session['user']
-		if (@user.user_type == "company")
-			@surveys = Survey.where(:user_id => @user.id);
-		else 
-			@surveys = Survey.where(:id => SurveyAssignments.select("survey_id").where(:assigned_to => session['user'].id))
+		@surveys = if current_user.company? 
+			current_user.surveys 
+		else
+			current_user.assigned_surveys 
 		end
 	end
 	
