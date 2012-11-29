@@ -1,6 +1,12 @@
 Starter::Application.routes.draw do
+  
+  match '/users/login' => 'users#login'
+  match '/manager' => 'manager#index'
+  match '/manager/test/:id' => 'manager#test'
+  match '/manager/evaluate/:id' =>'manager#evaluate'
+  
   resources :users
-
+  
   resources :surveys
 
   # The priority is based upon order of creation:
@@ -59,5 +65,5 @@ Starter::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-  match "users/login" => "users#login"
+ 
 end

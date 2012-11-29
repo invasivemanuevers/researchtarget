@@ -1,0 +1,17 @@
+<h3> Your surveys: <h3>
+
+<% for survey in @surveys %>
+	<ol>
+		<li> <%= survey.name %> 
+			 <% if @user.user_type == "agent" %>
+			     <%= link_to "Take survey test", :controller => 'manager', :action => 'test', :id => survey.id %>
+			     
+			 <% end %>
+		</li> <br/>
+	</ol>
+<% end %>
+
+<% if @user.user_type == "company" %>
+	<%= link_to "Manage surveys", surveys_path %>
+
+<% end %>

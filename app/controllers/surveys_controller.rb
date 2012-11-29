@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
   def index
     @surveys = Survey.all
+    #@users = User.where(:user_type => 'agent')
   end
 
   def show
@@ -16,7 +17,9 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(params[:survey])
+    @survey = Survey.new
+    @survey.name = params[:survey][:name]
+    @survey.user_id = session["user"].id;
     if @survey.save
       redirect_to @survey, :notice => "Successfully created survey."
     else
@@ -42,4 +45,6 @@ class SurveysController < ApplicationController
     @survey.destroy
     redirect_to surveys_url, :notice => "Successfully destroyed survey."
   end
+
+  
 end

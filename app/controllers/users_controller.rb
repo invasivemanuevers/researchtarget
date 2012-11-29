@@ -12,11 +12,15 @@ class UsersController < ApplicationController
   end
 
   def login
-     @user = User.where(:username => params[:user][:username]).first
+     @user = User.where(:username => params[:user][:username],
+                        :password => params[:user][:password],
+                        :user_type => params[:user][:user_type]).first
      if @user 
-        redirect_to surveys_path
+        session['user'] = @user
+        redirect_to manager_path
       else
-        render :action => 'users/index'
+        @user = User.new
+        redirect_to users_path
     end
   end
 

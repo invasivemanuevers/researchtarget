@@ -10,7 +10,9 @@
 	<li> <%=h question.content %></li>
 	<ol>
 	<% for answer in question.answers %>
-	 	<li> <%=h answer.content %> </li>
+	 	<li> <%=h answer.content %> &nbsp
+		 	 <%=h answer.is_corect %>
+		</li>
 	<% end %>
 	</ol>
 <% end %>

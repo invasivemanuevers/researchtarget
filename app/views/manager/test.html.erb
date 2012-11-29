@@ -1,0 +1,16 @@
+<%= form_tag("/manager/evaluate",:method=>'get') do %>
+	<%= @survey.name %><br/>
+	<ol>
+	<% for question in @survey.questions %>
+		<li> <%=h question.content %></li>
+		<ol>
+		<% for answer in question.answers %>
+		 	<li> <%=h answer.content %> &nbsp
+		 		 <%= check_box_tag ("check"+question.id.to_s+answer.id.to_s)%>
+		 	</li>
+		<% end %>
+		</ol>
+	<% end %>
+	</ol>
+	<%= submit_tag("Complete test")%>
+<% end %>
