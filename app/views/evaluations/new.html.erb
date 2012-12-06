@@ -1,0 +1,16 @@
+<%= form_for resource, url: user_survey_evaluation_path(survey), method: :put do |form|%>
+  <%= survey.name %><br/>
+  <ol>
+  <% survey.questions.each do |question| %>
+   <li> <%=h question.content %></li>
+    <ol>
+    <% question.answers.each do |answer| %>
+      <li> <%=h answer.content %> <%= answer_checkbox_tag(resource,question,answer) %>
+      </li>
+    <% end %>
+    </ol>
+
+  <% end %>
+  </ol>
+  <%= form.submit "Complete test"%>
+<% end %>

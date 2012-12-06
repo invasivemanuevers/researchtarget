@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
   database: starter
-  username: postgres
+  username: vvlad
   password:
-  host: localhost 
+  host: localhost
   encoding: utf8
   pool: 5
   timeout: 5000

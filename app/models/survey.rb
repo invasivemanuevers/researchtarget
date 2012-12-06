@@ -7,4 +7,6 @@ class Survey < ActiveRecord::Base
 	has_many :assignments
 	has_many :assignees, :through => :assignments, :source => :user
 	has_many :histories
+
+  has_many :answers, through: :questions, source: :answers
 end
