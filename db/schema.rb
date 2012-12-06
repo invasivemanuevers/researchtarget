@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129022521) do
+ActiveRecord::Schema.define(:version => 20121206014837) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -21,27 +21,26 @@ ActiveRecord::Schema.define(:version => 20121129022521) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "histories", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.integer  "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "questions", :force => true do |t|
     t.integer  "survey_id"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "survey_assignments", :force => true do |t|
-    t.integer  "survey_id"
-    t.integer  "user_id"
-    t.integer  "assigned_to"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "survey_histories", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "completed_by"
-    t.integer  "score"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "surveys", :force => true do |t|

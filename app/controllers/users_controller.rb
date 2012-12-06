@@ -13,15 +13,19 @@ class UsersController < ApplicationController
 
   def login
      @user = User.where(:username => params[:user][:username],
-                        :password => params[:user][:password],
-                        :user_type => params[:user][:user_type]).first
+                        :password => params[:user][:password]).first
      if @user 
-        session['user'] = @user
-        redirect_to manager_path
+        session['user'] = @user.id
+        redirect_to content_path
       else
         @user = User.new
         redirect_to users_path
     end
+  end
+
+  def logout 
+    session['user'] = nil
+    redirect_to users_path
   end
 
   def create

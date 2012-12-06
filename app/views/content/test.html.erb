@@ -1,4 +1,5 @@
-<%= form_tag("/manager/evaluate",:method=>'get') do %>
+
+<%= form_tag("/content/evaluate/"+@survey.id.to_s,:method=>'get') do %>
 	<%= @survey.name %><br/>
 	<ol>
 	<% for question in @survey.questions %>
@@ -12,5 +13,5 @@
 		</ol>
 	<% end %>
 	</ol>
-	<%= submit_tag("Complete test")%>
+	<%= submit_tag "Complete test"%>
 <% end %>

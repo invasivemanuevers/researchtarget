@@ -2,7 +2,7 @@
 <div style="width:300px;margin-left: auto;margin-right: auto;">
   <h3 style="margin-left :10px"> Login <h3>
 <fieldset>
-<%= form_for @user ,:url => 'users/login' do |f|  %>
+<%= form_for @user ,:url => users_login_path do |f|  %>
   <%= f.error_messages %>
   <p>
     <%= f.label :username %><br />
@@ -11,10 +11,6 @@
   <p>
     <%= f.label :password %><br />
     <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.label :user_type %><br />
-    <%= f.select(:user_type,["company","agent"]) %>
   </p>
   <p><%= f.submit "Login" %>
 <% end %>

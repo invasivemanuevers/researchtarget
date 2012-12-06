@@ -1,0 +1,28 @@
+<h3> Your surveys: <h3>
+
+<%= form_tag("/content/assign",:method=>'get') do %>
+	<% for survey in @surveys %>
+		<ol>
+			<%= hidden_field "survey_id",survey.id%> 
+			<li> <%= survey.name %> 
+				 <% if @user.user_type == "agent" %>
+				     <%= link_to "Take survey test", :controller => 'content', :action => 'test', :id => survey.id %>
+				 <% else %>
+				 <%= select_tag "user_id",options_from_collection_for_select(@assignees,"id","username") %>
+				 <%= submit_tag "Assign survey to user"%>
+				 <% end %> 
+			</li> <br/>
+		</ol>
+	<% end %>
+<% end %>
+
+<h2> Completed surveys <h2>
+ <% for survey in @completed_surveys %>
+    <%= survey.name %>  <b> <%= retrieve_score(@user.id, survey.id) %></b> 
+ <% end %>
+
+<% if @user.user_type == "company" %>
+	<%= link_to "Manage surveys", surveys_path %><br/>
+	<%= link_to "Log out", users_logout_path %>
+
+<% end %>

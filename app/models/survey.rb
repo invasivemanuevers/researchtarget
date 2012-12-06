@@ -4,6 +4,7 @@ class Survey < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   accepts_nested_attributes_for :questions, :reject_if => lambda {|a| a[:content].blank?}, :allow_destroy => true
 
-	has_many :survey_assignments, class_name: 'SurveyAssignments'
-	has_many :assignees, through: :survey_assignments, class_name: 'User'
+	has_many :assignments
+	has_many :assignees, :through => :assignments, :source => :user
+	has_many :histories
 end

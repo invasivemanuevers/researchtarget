@@ -1,31 +1,20 @@
 <% title "Survey" %>
 
 <% for survey in @surveys %>
-	<%= survey.name %><br/>
 	<ol>
-	<% for question in survey.questions %>
-		<li> <%=h question.content %></li>
-		<ol>
-		<% for answer in question.answers %>
-		 	<li> <%=h answer.content %> &nbsp
-		 		 <%=h answer.is_corect %>
-		 	</li>
-		<% end %>
-		</ol>
-	<% end %>
-	</ol>
-	<p>
-  <%= link_to "Edit", edit_survey_path(survey) %> |
-  <%= link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", surveys_path %>
-  
+	<%= survey.name %>
 
-</p>
+	
+	<%= link_to "Edit", edit_survey_path(survey) %> |
+  <%= link_to "Destroy", survey, :confirm => 'Are you sure?', :method => :delete %> 
+	</ol>
+	
 
 
 <%end%>
 
 <p><%= link_to "New Survey", new_survey_path %></p>
+<p><%= link_to "Home", content_path %> </p>
 
 
 

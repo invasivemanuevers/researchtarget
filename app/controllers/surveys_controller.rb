@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   def index
-    @surveys = Survey.all
-    #@users = User.where(:user_type => 'agent')
+    @surveys = current_user.surveys
+   
   end
 
   def show
@@ -19,7 +19,7 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new
     @survey.name = params[:survey][:name]
-    @survey.user_id = session["user"].id;
+    current_user.surveys << @survey
     if @survey.save
       redirect_to @survey, :notice => "Successfully created survey."
     else

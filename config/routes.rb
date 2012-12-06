@@ -1,15 +1,14 @@
 Starter::Application.routes.draw do
   
   match '/users/login' => 'users#login'
-  match '/manager' => 'manager#index'
-  match '/manager/test/:id' => 'manager#test'
-  match '/manager/evaluate/:id' =>'manager#evaluate'
+  match '/users/logout' => 'users#logout'
+  match '/content' => 'content#index'
+  match '/content/assign' => 'content#assign'
+  match '/content/test/:id' => 'content#test'
+  match '/content/evaluate/:id' =>'content#evaluate'
  
-
   resources :users
-
-  resources :surveys
-
-  root :to => 'users#index'
-
+  resources :surveys 
+ 
+root :to => "users#index"
 end
